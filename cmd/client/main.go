@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	client.MakeTable()
+	client.Table.Init()
 	fmt.Println(client.Table)
 	fmt.Println(client.Table.Length())
 }

@@ -1,17 +1,23 @@
 package client
 
 import (
+	"os"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
 )
 
+func TestMain(m *testing.M) {
+	setUp()
+	code := m.Run()
+	os.Exit(code)
+}
+
 func setUp() {
-	MakeTable()
+	Table.Init()
 }
 
 func TestConversion(t *testing.T) {
-	MakeTable()
 
 	message := "hello world"
 

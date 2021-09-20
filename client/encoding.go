@@ -11,16 +11,16 @@ func encodeMessage(message string) string {
 	for i, c := range encodedString {
 		index := strings.IndexRune(b64, c)
 		char := Table.IndexOf(index)
-		zeroLenChars[i] = char
+		zeroLenChars[i] = string(char)
 	}
-	return strings.Join(zeroLenChars, sep)
+	return strings.Join(zeroLenChars, string(sep))
 }
 
 func decodeMessage(message string) string {
-	zeroLenChars := strings.Split(message, sep)
+	zeroLenChars := strings.Split(message, string(sep))
 	var retMessage string = ""
 	for _, char := range zeroLenChars {
-		index := Table.CharIndex(char)
+		index := Table.CharIndex([]rune(char))
 		retMessage += string(b64[index])
 	}
 	bs, _ := base64.RawStdEncoding.DecodeString(retMessage)
